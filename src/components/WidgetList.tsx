@@ -10,17 +10,19 @@ export function WidgetList() {
   }
 
   return (
-    <div>
+    <div className="space-y-4">
       <button
-        style={{ border: "1px solid blue" }}
+        className="px-4 py-2 rounded border border-blue-500 text-blue-600 hover:bg-blue-50 transition"
         onClick={() => addWidget.mutate()}
       >
         Add Widget
       </button>
 
-      {widgets?.map((widget: any) => {
-        return <WidgetItem key={widget.id} widget={widget} />;
-      })}
+      <div className="space-y-3">
+        {widgets?.map((widget: any) => (
+          <WidgetItem key={widget.id} widget={widget} />
+        ))}
+      </div>
     </div>
   );
 }

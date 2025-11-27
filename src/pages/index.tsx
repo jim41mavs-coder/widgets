@@ -8,19 +8,14 @@ export default function Home() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          // alignItems: "center",
-          flexDirection: "column",
-          width: "100%",
-        }}
-      >
-        <div>
-          <h1>Trumpet Widgets</h1>
+      <div className="min-h-screen bg-white">
+        <main className="max-w-3xl mx-auto p-6 space-y-4">
+          <header className="flex items-center justify-between">
+            <h1 className="text-2xl font-semibold">Trumpet Widgets</h1>
+          </header>
+
           <WidgetList />
-        </div>
+        </main>
       </div>
     </QueryClientProvider>
   );
