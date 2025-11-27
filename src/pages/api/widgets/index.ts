@@ -1,6 +1,5 @@
 import { loadWidgets, saveWidgets } from "@/utils/db";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { v4 as uuidv4 } from "uuid";
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +13,7 @@ export default async function handler(
 
   if (req.method === "POST") {
     const newWidget = {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       text: "",
     };
 

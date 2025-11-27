@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WidgetList } from "@/components/WidgetList";
 import { useState } from "react";
+import React from "react";
 
 export default function Home() {
   const [queryClient] = useState(() => new QueryClient());

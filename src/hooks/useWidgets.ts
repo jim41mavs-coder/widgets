@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import React from "react";
 
 export function useWidgets() {
   const queryClient = useQueryClient();
@@ -36,10 +37,23 @@ export function useWidgets() {
     },
   });
 
+  const deleteWidget = useMutation({
+    mutationFn: async ({ id }: { id: string }) => {
+      const res = await fetch(`/api/widgets/${id}`, {
+        method: "DELETE",
+      });
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["widgets"] });
+    },
+  });
+
   return {
     widgets: widgetsQuery.data || [],
     isLoading: widgetsQuery.isLoading,
     addWidget: addWidget,
     updateWidget,
+    deleteWidget,
   };
 }

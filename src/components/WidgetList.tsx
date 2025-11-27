@@ -1,5 +1,6 @@
 import { useWidgets } from "@/hooks/useWidgets";
 import WidgetItem from "./WidgetItem";
+import React from "react";
 
 export function WidgetList() {
   const { widgets, isLoading, addWidget } = useWidgets();

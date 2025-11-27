@@ -1,9 +1,10 @@
 import { useWidgets } from "@/hooks/useWidgets";
 import useDebounce from "@/hooks/useDebounce";
 import { useEffect, useRef, useState } from "react";
+import React from "react";
 
 export default function WidgetItem({ widget }: any) {
-  const { updateWidget } = useWidgets();
+  const { updateWidget, deleteWidget } = useWidgets();
 
   const [value, setValue] = useState(widget.text);
   const debouncedValue = useDebounce(value);
@@ -28,6 +29,9 @@ export default function WidgetItem({ widget }: any) {
 
   return (
     <div style={{ display: "flex" }}>
+      <button onClick={() => deleteWidget.mutate({ id: widget.id })}>
+        Delete
+      </button>
       <textarea
         style={{
           border: "1px solid black",
