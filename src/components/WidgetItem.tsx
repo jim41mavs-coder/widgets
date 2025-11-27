@@ -2,8 +2,9 @@ import { useWidgets } from "@/hooks/useWidgets";
 import useDebounce from "@/hooks/useDebounce";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
+import { Widget } from "@/types/widget";
 
-export default function WidgetItem({ widget }: any) {
+export default function WidgetItem({ widget }: { widget: Widget }) {
   const { updateWidget, deleteWidget } = useWidgets();
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);

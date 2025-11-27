@@ -1,6 +1,7 @@
 import { useWidgets } from "@/hooks/useWidgets";
 import WidgetItem from "./WidgetItem";
 import React from "react";
+import { Widget } from "@/types/widget";
 
 export function WidgetList() {
   const { widgets, isLoading, addWidget } = useWidgets();
@@ -19,7 +20,7 @@ export function WidgetList() {
       </button>
 
       <div className="space-y-3">
-        {widgets?.map((widget: any) => (
+        {widgets?.map((widget: Widget) => (
           <WidgetItem key={widget.id} widget={widget} />
         ))}
       </div>

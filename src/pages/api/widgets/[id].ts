@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { loadWidgets, saveWidgets } from "@/utils/db";
+import { Widget } from "@/types/widget";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +10,7 @@ export default async function handler(
 
   const widgets = await loadWidgets();
 
-  const widget = widgets.find((w: any) => w.id === id);
+  const widget = widgets.find((w: Widget) => w.id === id);
 
   if (!widget) {
     return res.status(404).json({ message: "Widget Not Found" });
@@ -26,7 +27,7 @@ export default async function handler(
   }
 
   if (req.method === "DELETE") {
-    const updatedWidgets = widgets.filter((w: any) => w.id !== id);
+    const updatedWidgets = widgets.filter((w: Widget) => w.id !== id);
 
     await saveWidgets(updatedWidgets);
 

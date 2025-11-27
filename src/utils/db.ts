@@ -1,8 +1,13 @@
+import { Widget } from "@/types/widget";
 import { readFile, writeFile } from "fs/promises";
 
 const DB_PATH = "./db.json";
 
-export async function loadWidgets() {
+interface DBShape {
+  widgets: Widget[];
+}
+
+export async function loadWidgets(): Promise<Widget[]> {
   try {
     const data = await readFile(DB_PATH, "utf-8");
     return JSON.parse(data)?.widgets || [];
@@ -18,7 +23,7 @@ export async function loadWidgets() {
   }
 }
 
-export async function saveWidgets(widgets: any) {
+export async function saveWidgets(widgets: Widget[]): Promise<void> {
   const data = { widgets };
 
   await writeFile(DB_PATH, JSON.stringify(data, null, 2), "utf-8");
